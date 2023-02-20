@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import Data from "../listing.json";
-
+import "./Nftdetails.css";
 const Nftdetail = () => {
   const { id } = useParams();
 
@@ -32,18 +32,36 @@ const Nftdetail = () => {
 
       <div className="container text-light">
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-6 rounded">
             <img className="w-100" src={nftItem.image} alt={nftItem.name} />
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6 self">
             <h2>{nftItem.name}</h2>
             <p>{nftItem.description}</p>
-
-            <button className="btn btn-success">Buy NFT</button>
-            <button className="btn btn-danger">Associate Token</button>
-
-            <p>{nftItem.tokenid}</p>
-            <p>{nftItem.serialno}</p>
+            <p className="text-danger">Token Number : {nftItem.tokenid}</p>
+            <p>Serial Number : {nftItem.serialno}</p>
+            <hr></hr>
+            <hr></hr>
+            <hr></hr>
+            <hr></hr>
+            <hr></hr>
+            <hr></hr>
+            <hr></hr>
+            <hr></hr>
+            <hr></hr>
+            <hr></hr>
+            <hr></hr>
+            <hr></hr>
+            <hr></hr>
+            <hr></hr>
+            <hr></hr>
+            <hr></hr>
+            <button className="btn btn-outline-primary btn-lg btn-block mx-2">
+              Associate Token
+            </button>
+            <button className="btn btn-primary btn-lg btn-block mx-2">
+              Buy this NFT
+            </button>
           </div>
         </div>
       </div>
