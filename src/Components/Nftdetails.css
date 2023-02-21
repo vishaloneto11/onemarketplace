@@ -2,3 +2,36 @@
     border: 1px solid white;
     
 }
+h2{
+    font-weight: bold;
+}
+h5{
+    color:skyblue;
+}
+.symobol{
+    margin-top: 25px;
+}
+.des{
+    margin-top: 50px;
+}
+.tokenid{
+    margin-top: 50px;
+}
+.serialno{
+    margin-top: 50px;
+}
+.mybtn{
+    margin-top: 100px;
+    text-align: left; 
+}
+table{
+    margin-top: 70px;
+}
+
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+  
+    
+  }
+  

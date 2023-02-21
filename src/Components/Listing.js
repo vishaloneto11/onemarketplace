@@ -13,8 +13,8 @@ const Listing = () => {
                 <div class="card">
                   <img src={item.image} alt="item" />
                   <h3 className="p-2">{item.name}</h3>
-                  <p className="px-2 pb-2">{item.description}</p>
-                  <p className="px-2 pb-2">Price : 1 hbar</p>
+                  <h6 className="px-2 pb-2">{item.description}</h6>
+                  <h6 className="px-2 pb-2">Price : 1 hbar</h6>
                   <Link
                     to={`/nftdetails/${item.serialno}`}
                     className="btn btn-dark mx-2 mb-2"

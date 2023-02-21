@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import walletConnectFcn from "./HTS/walletConnect";
+import "./Header.css";
 const Header = () => {
   const [walletData, setWalletData] = useState();
   const [accountId, setAccountId] = useState();
-  const [connectTextSt, setConnectTextSt] = useState("🔌");
+  const [connectTextSt, setConnectTextSt] = useState(
+    "🔌Welcome Please connect your Wallet First"
+  );
+
   const [connectLinkSt, setConnectLinkSt] = useState("");
   const [createTextSt, setCreateTextSt] = useState("");
 
@@ -45,26 +49,31 @@ const Header = () => {
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-
+        <div className="wallet">
+          <li class="nav-item text-danger">
+            {connectTextSt}
+            {/* {connectLinkSt} */}
+          </li>
+        </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item text-light">
-              {connectTextSt}
+              {/* {connectTextSt} */}
               {/* {connectLinkSt} */}
             </li>
             <li class="nav-item">
-              <a
+              <Link
                 class="nav-link active text-light"
                 aria-current="page"
-                href="#"
+                to="/"
               >
                 Marketplace
-              </a>
+              </Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link active text-light" href="#">
+              <Link class="nav-link active text-light" to="/">
                 Sold
-              </a>
+              </Link>
             </li>
 
             <li class="nav-item">
