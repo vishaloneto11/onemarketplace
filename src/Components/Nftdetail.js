@@ -1,28 +1,28 @@
+import { PublicKey } from "@hashgraph/cryptography";
+import { TokenAssociateTransaction } from "@hashgraph/sdk";
+import axios from "axios";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Data from "../listing.json";
+import Assotoken from "./HTS/Associatenft";
+import tokenTransferfcn from "./HTS/buyNft";
 import "./Nftdetails.css";
-// import assotoken from "./HTS/AssociateToken";
-// import tokenTransferfcn from "./HTS/buyNft";
-// import Header from "./Header";
 
-// const [connectTextSt, setConnectTextSt] = useState("🔌 Connect here...");
-// const [tokenSupply, setTokenSupply] = useState();
-// const [mintTextSt, setMintTextSt] = useState("");
-// const [mintLinkSt, setMintLinkSt] = useState("");
-
-const Nftdetail = () => {
-  async function asstoken(tokenid) {
-    console.log("Tokenid", tokenid);
-    // const [supply, txIdRaw] = await assotoken();
-    // walletData,
-    // accountId,
-    // tokenId
+const Nftdetail = ({ walletData, accountId }) => {
+  const [tokenSupply, setTokenSupply] = useState();
+  const [connectTextSt, setConnectTextSt] = useState("🔌 Connect here...");
+  const [mintTextSt, setMintTextSt] = useState("");
+  const [mintLinkSt, setMintLinkSt] = useState("");
+  console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$", walletData);
+  console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$", accountId);
+  // Association function
+  const asstoken = async (tokenid) => {
+    return Assotoken(walletData, accountId, tokenid);
     // setTokenSupply(supply);
-    // setMintTextSt(`Supply of token ${tokenId} is ${supply}! ✅`);
+    // setMintTextSt(`Supply of token ${tokenid} is ${supply}! ✅`);
     // const txId = prettify(txIdRaw);
     // setMintLinkSt(`https://hashscan.io/#/testnet/transaction/${txId}`);
-  }
+  };
 
   async function tokenTransfer(tokenid, serialno) {
     const Tid = process.env.REACT_APP_OPERATOR_ID;
@@ -31,11 +31,12 @@ const Nftdetail = () => {
     console.log(serialno);
     console.log(Tid);
     console.log(Tkey);
-    // const [] = await tokenTransferfcn(walletData, accountId, Tid, Tkey);
-    // setConnectTextSt(`🔌 NFt transfer ⚡ ✅`);
+    await tokenTransferfcn(walletData, accountId, Tid, Tkey, tokenid, serialno);
+    setConnectTextSt(`🔌 NFt transfer ⚡ ✅`);
   }
   const { id } = useParams();
   const nftItem = Data.find((item) => item.serialno === id);
+
   return (
     <div>
       <h1 className="text-center text-light mb-4">NFT DETAILS</h1>

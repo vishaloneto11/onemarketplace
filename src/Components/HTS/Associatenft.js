@@ -4,7 +4,10 @@ import {
   PublicKey,
   TokenAssociateTransaction,
 } from "@hashgraph/sdk";
-async function assotoken(walletData, accountId, TokenId) {
+async function Assotoken(walletData, accountId, tid) {
+  console.log("@@@@@@@", walletData);
+  console.log("@@@@@@@", accountId);
+  console.log("@@@@@@@", tid);
   const hashconnect = walletData[0];
   const saveData = walletData[1];
   const provider = hashconnect.getProvider(
@@ -17,7 +20,7 @@ async function assotoken(walletData, accountId, TokenId) {
   const url = `https://testnet.mirrornode.hedera.com/api/v1/accounts?account.id=${accountId}`;
   const mirrorQuery = await axios(url);
   const supplyKey = PublicKey.fromString(mirrorQuery.data.accounts[0].key.key);
-  const tokenId = TokenId;
+  const tokenId = tid;
   // const tokenId = "0.0.3064631"
 
   const transaction = await new TokenAssociateTransaction()
@@ -36,4 +39,4 @@ async function assotoken(walletData, accountId, TokenId) {
   );
 }
 
-export default assotoken;
+export default Assotoken;

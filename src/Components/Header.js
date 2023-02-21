@@ -1,37 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import walletConnectFcn from "./HTS/walletConnect";
+// import walletConnectFcn from "./HTS/walletConnect";
 import "./Header.css";
-const Header = () => {
-  const [walletData, setWalletData] = useState();
-  const [accountId, setAccountId] = useState();
-  const [connectTextSt, setConnectTextSt] = useState(
-    "🔌Welcome Please connect your Wallet First"
-  );
-
-  const [connectLinkSt, setConnectLinkSt] = useState("");
-  const [createTextSt, setCreateTextSt] = useState("");
-
-  async function connectWallet() {
-    if (accountId !== undefined) {
-      setConnectTextSt(`🔌 Account ${accountId} already connected ⚡ ✅`);
-    } else {
-      const wData = await walletConnectFcn();
-      wData[0].pairingEvent.once((pairingData) => {
-        pairingData.accountIds.forEach((id) => {
-          setAccountId(id);
-          console.log(`- Paired account id: ${id}`);
-          setConnectTextSt(`🔌 Account ${id} connected✅`);
-          setConnectLinkSt(`https://hashscan.io/#/testnet/account/${id}`);
-        });
-      });
-      setWalletData(wData);
-      console.log(wData);
-
-      setCreateTextSt();
-    }
-  }
-
+const Header = ({ connectTextSt, connectWallet }) => {
   return (
     <nav class="navbar navbar-expand-lg bg-dark">
       <div class="container-fluid">
